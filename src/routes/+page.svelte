@@ -1,2 +1,20 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Button from '$lib/components/ui/button/button.svelte';
+</script>
+
+<div class="container my-48 flex max-w-screen-md flex-col gap-4">
+	<h1 class="text-4xl font-bold">Jim's Shitty Codenames Clone</h1>
+	<p>
+		So instead of having random words we can have whatever word we want by choosing wordlists in the
+		lobby of the game.
+	</p>
+	<p>This is also how I intend to learn SvelteKit.</p>
+	<div>
+		<Button href="/login">Log In with Discord</Button>
+	</div>
+	<!-- <div class="h-16"></div>
+	<div>
+		Currently Logged In:
+		<ul></ul>
+	</div> -->
+</div>
