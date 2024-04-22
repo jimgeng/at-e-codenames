@@ -10,8 +10,12 @@
 	</p>
 	<p>This is also how I intend to learn SvelteKit.</p>
 	<div>
-		<Button href="/login">Log In with Discord</Button>
+		<Button href="/login">Log In with Google</Button>
 	</div>
+	<p>
+		I wanted to integrate discord login but its too hard so maybe for something else in the future
+		I'll try it.
+	</p>
 	<!-- <div class="h-16"></div>
 	<div>
 		Currently Logged In:

@@ -1,6 +1,8 @@
 import { expect, test } from 'vitest';
 import { createGame, generateBoard } from './game';
 import type { Board } from 'types/game';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from './firebase';
 
 export const testWords = [
 	'apple',
@@ -80,6 +82,19 @@ test('generateBoard to properly generate a board with blue starting team', () =>
 	expect(neutralCount).toBe(7);
 });
 
+test('createGame uploads a new game to firestore', async () => {
+	const gameId = await createGame(testWords);
+	expect(gameId).toBeDefined();
+	await new Promise<void>((resolve) =>
+		setTimeout(() => {
+			if (gameId) deleteDoc(doc(db, 'games', gameId));
+			resolve();
+		}, 5000)
+	);
+}, 6000);
+
+// Utility functions
+
 function countColors(board: Board) {
 	let [redCount, blueCount, blackCount, neutralCount] = [0, 0, 0, 0];
 	for (const cell of board) {
@@ -95,8 +110,3 @@ function countColors(board: Board) {
 	}
 	return { redCount, blueCount, blackCount, neutralCount };
 }
-
-test('createGame uploads a new game to firestore', async () => {
-	const gameId = await createGame();
-	expect(gameId).toBeDefined();
-});
