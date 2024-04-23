@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Card } from 'types/game';
+	import type { Card } from '$lib/types/game';
 	import { Button } from '$lib/components/ui/button';
 	import { Check, Plus } from 'lucide-svelte';
 	import { revealCard } from '$lib/game';

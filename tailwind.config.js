@@ -47,6 +47,14 @@ const config = {
 				card: {
 					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
 					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
+				},
+				appblue: {
+					DEFAULT: 'hsl(var(--appblue) / <alpha-value>)',
+					foreground: 'hsl(var(--appblue-foreground) / <alpha-value>)'
+				},
+				appred: {
+					DEFAULT: 'hsl(var(--appred) / <alpha-value>)',
+					foreground: 'hsl(var(--appred-foreground) / <alpha-value>)'
 				}
 			},
 			borderRadius: {

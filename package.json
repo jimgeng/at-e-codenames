@@ -43,7 +43,9 @@
 		"bits-ui": "^0.21.3",
 		"clsx": "^2.1.0",
 		"firebase": "^10.11.0",
+		"firebase-admin": "^12.1.0",
 		"lucide-svelte": "^0.372.0",
+		"mode-watcher": "^0.3.0",
 		"tailwind-merge": "^2.2.2",
 		"tailwind-variants": "^0.2.1",
 		"uuid": "^9.0.1"

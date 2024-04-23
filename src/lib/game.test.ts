@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { createGame, generateBoard } from './game';
-import type { Board } from 'types/game';
+import type { Board } from '$lib/types/game';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from './firebase';
 

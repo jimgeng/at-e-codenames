@@ -7,7 +7,7 @@ import {
 	updateDoc
 } from 'firebase/firestore';
 import { db } from './firebase';
-import type { Card, Game } from 'types/game';
+import type { Card, Game } from '$lib/types/game';
 import { shuffle } from '$lib/shuffle';
 import { gameState, writableGameState } from '$lib/store';
 import { v4 as uuidv4 } from 'uuid';
