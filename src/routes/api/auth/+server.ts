@@ -44,6 +44,7 @@ export async function GET(reqEvent: RequestEvent) {
 
 async function getDiscordToken(code: string): Promise<DiscordTokenRes> {
 	if (env.DISCORD_CLIENT_ID === undefined || env.DISCORD_AUTH_SECRET === undefined) {
+		console.error('envs undefined');
 		throw new Error('envs undefined');
 	}
 	const tokenResponse = await fetch('https://discord.com/api/oauth2/token', {

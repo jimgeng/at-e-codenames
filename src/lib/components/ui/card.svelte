@@ -22,16 +22,16 @@
 			// TODO: Change this later.
 			switch (card.color) {
 				case 'red':
-					return 'bg-red-300';
+					return 'bg-appred';
 				case 'blue':
-					return 'bg-sky-300';
+					return 'bg-appblue';
 				case 'black':
-					return 'bg-gray-700 text-gray-200';
+					return 'bg-gray-900 text-gray-200 dark:bg-black-200';
 				default:
-					return 'bg-gray-200';
+					return 'bg-gray-200 dark:bg-gray-700 dark:text-gray-200';
 			}
 		} else {
-			return 'bg-gray-200';
+			return 'bg-gray-200 dark:bg-gray-700 dark:text-gray-200';
 		}
 	}
 </script>
