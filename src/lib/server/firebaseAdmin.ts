@@ -3,6 +3,7 @@ import { applicationDefault, cert, getApps, initializeApp } from 'firebase-admin
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 
+console.log(env.SERVICE_APP_PATH);
 const servAccDetails = await import(/* @vite-ignore */ env.SERVICE_APP_PATH); // dev path
 const appCert = servAccDetails ? cert(servAccDetails) : applicationDefault();
 

@@ -28,14 +28,13 @@
 	}
 </script>
 
-<div class="container my-48 flex max-w-screen-md flex-col gap-4">
+<div class="container flex justify-center h-full max-w-screen-md flex-col gap-4">
 	<h1 class="text-4xl font-bold">Shitty Codenames Clone</h1>
 	<p>
 		So instead of having random words we can have whatever word we want by choosing wordlists in the
 		lobby of the game.
 	</p>
-	<p>This is also how I intend to learn SvelteKit.</p>
-	<div class="mt-72">
+	<div class="mt-24">
 		{#if $user}
 			<div class="flex items-center gap-2">
 				<img
@@ -46,10 +45,24 @@
 				<Button variant="outline" class="cursor-default hover:bg-inherit"
 					>Logged in as {$user.global_name}</Button
 				>
-				<Button variant="secondary" class="bg-appblue" on:click={logout}>Log out</Button>
+				<Button
+					variant="secondary"
+					class="bg-appblue hover:bg-appblue hover:opacity-90 transition-all"
+					on:click={logout}>Log out</Button
+				>
+				<Button
+					href="/games"
+					variant="secondary"
+					class="bg-appred hover:bg-appred hover:opacity-90 transition-all"
+					>Find or Join Lobby</Button
+				>
 			</div>
 		{:else}
-			<Button href={discordLogin}>Log In with Discord</Button>
+			<Button
+				variant="secondary"
+				class="bg-appblue hover:bg-appblue hover:opacity-90 transition-all"
+				href={discordLogin}>Log In with Discord</Button
+			>
 		{/if}
 	</div>
 	<!-- <div class="h-16"></div>

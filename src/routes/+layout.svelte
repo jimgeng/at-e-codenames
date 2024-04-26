@@ -16,4 +16,6 @@
 	/>
 	<span class="sr-only">Toggle theme</span>
 </Button>
-<slot />
+<div class="p-4 min-h-screen h-screen">
+	<slot />
+</div>

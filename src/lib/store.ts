@@ -1,6 +1,6 @@
 import type { Game } from '$lib/types/game';
 import { onAuthStateChanged, type User as FirebaseUser } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { derived, readonly, writable } from 'svelte/store';
 import { auth, db } from './firebase';
 import type { DiscordUser } from './types/user';
@@ -19,7 +19,7 @@ function userStore() {
 		};
 	}
 	const { subscribe } = writable<FirebaseUser | null>(auth.currentUser ?? null, (set) => {
-		unsubscribe = onAuthStateChanged(auth, async (user) => {
+		unsubscribe = onAuthStateChanged(auth, (user) => {
 			set(user);
 		});
 
@@ -31,7 +31,7 @@ function userStore() {
 	};
 }
 
-export const user = userStore();
+const user = userStore();
 
 export const discordUser = derived<typeof user, DiscordUser | null>(user, ($user, set) => {
 	if (!$user) {
@@ -42,6 +42,18 @@ export const discordUser = derived<typeof user, DiscordUser | null>(user, ($user
 		set(newUser);
 	});
 });
+
+export function gameStore(gameId: string) {
+	let unsubscribe: () => void;
+	const docRef = doc(db, 'games', gameId);
+	const { subscribe } = writable<Game | null>(null, (set) => {
+		unsubscribe = onSnapshot(docRef, (doc) => {
+			set(doc.data() as Game);
+		});
+		return () => unsubscribe();
+	});
+	return { subscribe };
+}
 
 async function getUserFromFirebaseUser(User: FirebaseUser): Promise<DiscordUser> {
 	const userDoc = await getDoc(doc(db, 'users', User.uid));
